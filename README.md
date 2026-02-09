@@ -3,6 +3,7 @@ This code provides the channel measurement data, source files, and generation co
 Z. Li, C.-X. Wang*, C. Huang*, J. Huang, J. Li, W. Zhou, and Y. Chen, "A GAN-GRU Based Space-Time Predictive Channel Model for 6G Wireless Communications," IEEE Transactions on Vehicular Technology, vol. 73, no. 7, pp. 9370-9386, July 2024.
 
 If you use this data or code, please cite the following paper:
+
 @article{Li2024GANGRU,
   title={A GAN-GRU Based Space-Time Predictive Channel Model for 6G Wireless Communications},
   author={Li, Zheao and Wang, Cheng-Xiang and Huang, Chen and Huang, Jie and Li, Junling and Zhou, Wenqi and Chen, Yunfei},
@@ -14,7 +15,8 @@ If you use this data or code, please cite the following paper:
 
 # Channel Measurement Data
 The raw data is organized into .mat files, categorized by measurement scenarios and data types.
-1. Indoor Multi-Band Measurement Data (2.4 / 5 / 6 GHz): This subset includes channel impulse responses (CIRs) and power delay profiles (PDPs) collected in an indoor corridor environment. It covers three key frequency bands, providing a rich basis for frequency-dependent channel analysis.
+
+Indoor Multi-Band Measurement Data (2.4 / 5 / 6 GHz): This subset includes channel impulse responses (CIRs) and power delay profiles (PDPs) collected in an indoor corridor environment. It covers three key frequency bands, providing a rich basis for frequency-dependent channel analysis.
 
 •	APDP_LOS_24G_new2.mat: Average Power Delay Profile (APDP) under Line-of-Sight (LoS) conditions at 2.4 GHz Band.
 
@@ -24,8 +26,8 @@ The raw data is organized into .mat files, categorized by measurement scenarios 
 
 •	APDP_LOS_6G_new2.mat / APDP_NLOS_6G_new2.mat: APDP data for LoS/NLoS scenarios at 6 GHz Band.
 
-3. Outdoor UMi Scenario Data: This subset represents an Urban Micro-cell (UMi) environment, featuring continuous route measurements to capture spatial channel evolution.
-4. 
+Outdoor UMi Scenario Data: This subset represents an Urban Micro-cell (UMi) environment, featuring continuous route measurements to capture spatial channel evolution.
+
 •	CIR_L_case1_15pos.mat: Channel measurement data collected at 15 sequential positions collected in the LoS scenario.
 
 •	CIR_N_case1_10pos.mat: Channel measurement data collected at 10 sequential positions collected in the NLoS scenario.
