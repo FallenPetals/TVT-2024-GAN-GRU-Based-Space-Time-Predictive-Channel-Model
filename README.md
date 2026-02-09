@@ -21,38 +21,47 @@ If you use this data or code in your research, please cite the following paper:
 # Channel Measurement Data
 The raw data is organized into .mat files, categorized by measurement scenarios and data types.
 
-Indoor Multi-Band Measurement Data (2.4 / 5 / 6 GHz): This subset includes channel impulse responses (CIRs) and power delay profiles (PDPs) collected in an indoor corridor environment. It covers three key frequency bands, providing a rich basis for frequency-dependent channel analysis.
+1. Indoor Multi-Band Measurement Data (2.4 / 5 / 6 GHz): This subset includes channel impulse responses (CIRs) and power delay profiles (PDPs) collected in an indoor corridor environment. It covers three key frequency bands, providing a rich basis for frequency-dependent channel analysis.
 
-•	APDP_LOS_24G_new2.mat: Average power delay profile (APDP) under Line-of-Sight (LoS) conditions at 2.4 GHz Band.
+ •	APDP_LOS_24G_new2.mat: Average power delay profile (APDP) under Line-of-Sight (LoS) conditions at 2.4 GHz Band.
 
-•	APDP_NLOS_24G_new2.mat: APDP under Non-Line-of-Sight (NLoS) conditions at 2.4 GHz Band.
+ •	APDP_NLOS_24G_new2.mat: APDP under Non-Line-of-Sight (NLoS) conditions at 2.4 GHz Band.
 
-•	APDP_LOS_5G_new2.mat / APDP_NLOS_5G_new2.mat: APDP data for LoS/NLoS scenarios at 5 GHz Band.
+ •	APDP_LOS_5G_new2.mat / APDP_NLOS_5G_new2.mat: APDP data for LoS/NLoS scenarios at 5 GHz Band.
 
-•	APDP_LOS_6G_new2.mat / APDP_NLOS_6G_new2.mat: APDP data for LoS/NLoS scenarios at 6 GHz Band.
+ •	APDP_LOS_6G_new2.mat / APDP_NLOS_6G_new2.mat: APDP data for LoS/NLoS scenarios at 6 GHz Band.
 
-Outdoor UMi Scenario Data: This subset represents an Urban Micro-cell (UMi) environment, featuring continuous route measurements to capture spatial channel evolution.
+2. Outdoor UMi Scenario Data: This subset represents an Urban Micro-cell (UMi) environment, featuring continuous route measurements to capture spatial channel evolution.
 
-•	CIR_L_case1_15pos.mat: Channel measurement data collected at 15 sequential positions collected in the LoS scenario.
+ •	CIR_L_case1_15pos.mat: Channel measurement data collected at 15 sequential positions collected in the LoS scenario.
 
-•	CIR_N_case1_10pos.mat: Channel measurement data collected at 10 sequential positions collected in the NLoS scenario.
+ •	CIR_N_case1_10pos.mat: Channel measurement data collected at 10 sequential positions collected in the NLoS scenario.
 
 
 # Main Modules
 The project implements a comprehensive framework for channel modeling, consisting of three main modules:
 1. Path Identification (LOS_NLOS.m)
+
  •	Description: MATLAB script for Algorithm 1 (Delay PSD-Based Path Identification).
+ 
  •	Function: It processes raw CIR data and identifies LoS/NLoS paths.
+ 
  •	Key Logic: The algorithm strictly utilizes physical thresholds ($S_{max} \ge T_1$ and $S_{mean} \ge T_2$) to classify paths, ensuring robust identification performance.
 
-2. STGAN Data Augmentation (STGAN.py)
+3. STGAN Data Augmentation (STGAN.py)
+
  •	Description: Python implementation of Algorithm 2 (STGAN-Based Data Augmentation).
+ 
  •	Function: Trains a Conditional GAN (CGAN) to synthesize realistic CIR data.
+ 
  •	Key Logic: Implements a standard CGAN architecture where the generator explicitly concatenates noise ($z$) and condition ($y$) as input ($G(z|y)$), and uses Binary Cross Entropy (Log Loss)  for stable training.
 
-4. Channel Prediction (GRU_DPSD.py)
+5. Channel Prediction (GRU_DPSD.py)
+   
  •	Description: Python implementation of the Predictive Model.
+ 
  •	Function: Utilizes the STGAN-augmented dataset to train a Gated Recurrent Unit (GRU) network.
+ 
  •	Key Logic: Performs time-series prediction of future channel parameters based on historical channel evolution.
 
 
