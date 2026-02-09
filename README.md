@@ -58,6 +58,6 @@ To run the codes, you need the following environment:
 
 
 # Usage
-1. Preprocessing: Run LOS_NLOS.m in MATLAB to process raw channel measurement data and obtain path labels.
+1. Preprocessing: Run LOS_NLOS.m in MATLAB to process raw channel measurement data and obtain path labels. Manually convert the preprocessed data from .mat file to .csv file for Step 2.
 2. Data augmentation: Run STGAN.py to train the GAN model and generate sufficient synthetic channel data.
 3. Prediction: Run GRU_DPSD.py using the generated data to evaluate prediction performance.
