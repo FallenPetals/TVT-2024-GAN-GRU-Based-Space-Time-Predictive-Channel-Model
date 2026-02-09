@@ -1,14 +1,19 @@
 # TVT-2024-GAN-GRU-Based-Space-Time-Predictive-Channel-Model
-This code provides the channel measurement data, source files, and generation codes of all the figure in this paper:
+This repository contains the source code, channel measurement data, and generation scripts for the paper:
 Z. Li, C.-X. Wang*, C. Huang*, J. Huang, J. Li, W. Zhou, and Y. Chen, "A GAN-GRU Based Space-Time Predictive Channel Model for 6G Wireless Communications," IEEE Transactions on Vehicular Technology, vol. 73, no. 7, pp. 9370-9386, July 2024.
 
-If you use this data or code, please cite the following paper:
+
+# Citation
+If you use this data or code in your research, please cite the following paper:
 
 @article{Li2024GANGRU,
   title={A GAN-GRU Based Space-Time Predictive Channel Model for 6G Wireless Communications},
   author={Li, Zheao and Wang, Cheng-Xiang and Huang, Chen and Huang, Jie and Li, Junling and Zhou, Wenqi and Chen, Yunfei},
   journal={IEEE Transactions on Vehicular Technology},
   year={2024},
+  volume={73},
+  number={7},
+  pages={9370--9386},
   doi={10.1109/tvt.2024.3367386}
 }
 
@@ -18,7 +23,7 @@ The raw data is organized into .mat files, categorized by measurement scenarios 
 
 Indoor Multi-Band Measurement Data (2.4 / 5 / 6 GHz): This subset includes channel impulse responses (CIRs) and power delay profiles (PDPs) collected in an indoor corridor environment. It covers three key frequency bands, providing a rich basis for frequency-dependent channel analysis.
 
-•	APDP_LOS_24G_new2.mat: Average Power Delay Profile (APDP) under Line-of-Sight (LoS) conditions at 2.4 GHz Band.
+•	APDP_LOS_24G_new2.mat: Average power delay profile (APDP) under Line-of-Sight (LoS) conditions at 2.4 GHz Band.
 
 •	APDP_NLOS_24G_new2.mat: APDP under Non-Line-of-Sight (NLoS) conditions at 2.4 GHz Band.
 
@@ -35,17 +40,29 @@ Outdoor UMi Scenario Data: This subset represents an Urban Micro-cell (UMi) envi
 
 # Main Modules
 The project implements a comprehensive framework for channel modeling, consisting of three main modules:
-1. Path Identification: A threshold-based algorithm to classify LoS/NLoS paths from raw measurement data.
-2. STGAN (Space-Time GAN): A Conditional GAN (CGAN) based model for high-fidelity channel data augmentation.
-3. GRU Predictor: A Gated Recurrent Unit network for time-series channel prediction.
+1. Path Identification (LOS_NLOS.m)
+ •	Description: MATLAB script for Algorithm 1 (Delay PSD-Based Path Identification).
+ •	Function: It processes raw CIR data and identifies LoS/NLoS paths.
+ •	Key Logic: The algorithm strictly utilizes physical thresholds ($S_{max} \ge T_1$ and $S_{mean} \ge T_2$) to classify paths, ensuring robust identification performance.
 
-The repository focuses on the three core algorithms described in the paper:
-1. LOS_NLOS.m: MATLAB script for Algorithm 1 (Delay PSD-Based Path Identification). It processes raw Channel Impulse Response (CIR) data and identifies Line-of-Sight (LoS) and Non-Line-of-Sight (NLoS) paths based on physical thresholds.
-2. STGAN.py: Python implementation of Algorithm 2 (STGAN-Based Data Augmentation). It trains a conditional generative model to synthesize realistic CIR data.
-3. GRU_DPSD.py: Python implementation of Algorithm 2 (Predictive Model). It uses the augmented dataset to train a GRU network for predicting future channel parameters.
+2. STGAN Data Augmentation (STGAN.py)
+ •	Description: Python implementation of Algorithm 2 (STGAN-Based Data Augmentation).
+ •	Function: Trains a Conditional GAN (CGAN) to synthesize realistic CIR data.
+ •	Key Logic: Implements a standard CGAN architecture where the generator explicitly concatenates noise ($z$) and condition ($y$) as input ($G(z|y)$), and uses Binary Cross Entropy (Log Loss)  for stable training.
+
+4. Channel Prediction (GRU_DPSD.py)
+ •	Description: Python implementation of the Predictive Model.
+ •	Function: Utilizes the STGAN-augmented dataset to train a Gated Recurrent Unit (GRU) network.
+ •	Key Logic: Performs time-series prediction of future channel parameters based on historical channel evolution.
 
 
 # Requirements
 To run the codes, you need the following environment:
 1. Python Environment (for STGAN.py & GRU_DPSD.py)：Python 3.8+, PyTorch (Torch), NumPy, Pandas, Scikit-learn, Matplotlib
 2. MATLAB Environment (for LOS_NLOS.m): MATLAB R2020b or later
+
+
+# Usage
+1. Preprocessing: Run LOS_NLOS.m in MATLAB to process raw channel measurement data and obtain path labels.
+2. Data augmentation: Run STGAN.py to train the GAN model and generate sufficient synthetic channel data.
+3. Prediction: Run GRU_DPSD.py using the generated data to evaluate prediction performance.
