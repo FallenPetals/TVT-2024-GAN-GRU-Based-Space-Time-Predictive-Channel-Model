@@ -18,21 +18,6 @@ If you use this data or code in your research, please cite the following paper:
 }
 
 
-# Channel Measurement Data
-The raw data is organized into .mat files, categorized by measurement scenarios and data types.
-
-1. Indoor Multi-Band Measurement Data (2.4 / 5 / 6 GHz): This subset includes channel impulse responses (CIRs) and power delay profiles (PDPs) collected in an indoor corridor environment. It covers three key frequency bands, providing a rich basis for frequency-dependent channel analysis.
-
-   1. APDP_LOS_24G_new2.mat: Average power delay profile (APDP) under Line-of-Sight (LoS) conditions at 2.4 GHz Band.
-   2. APDP_NLOS_24G_new2.mat: APDP under Non-Line-of-Sight (NLoS) conditions at 2.4 GHz Band.
-   3. APDP_LOS_5G_new2.mat / APDP_NLOS_5G_new2.mat: APDP data for LoS/NLoS scenarios at 5 GHz Band.
-   4. APDP_LOS_6G_new2.mat / APDP_NLOS_6G_new2.mat: APDP data for LoS/NLoS scenarios at 6 GHz Band.
-
-2. Outdoor UMi Scenario Data: This subset represents an Urban Micro-cell (UMi) environment, featuring continuous route measurements to capture spatial channel evolution.
-   1. CIR_L_case1_15pos.mat: Channel measurement data collected at 15 sequential positions collected in the LoS scenario.
-   2. CIR_N_case1_10pos.mat: Channel measurement data collected at 10 sequential positions collected in the NLoS scenario.
-
-
 # Main Modules
 The project implements a comprehensive framework for channel modeling, consisting of three main modules:
 1. Path Identification (LOS_NLOS.m)
