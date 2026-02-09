@@ -43,7 +43,7 @@ The project implements a comprehensive framework for channel modeling, consistin
 2. STGAN Data Augmentation (STGAN.py)
    1. Description: Python implementation of Algorithm 2 (STGAN-Based Data Augmentation).
    2. Function: Trains a Conditional GAN (CGAN) to synthesize realistic CIR data.
-   3. Key Logic: Implements a standard CGAN architecture where the generator explicitly concatenates noise ($z$) and condition ($y$) as input (G($z$|$y$)), and uses Binary Cross Entropy (Log Loss)  for stable training.
+   3. Key Logic: Implements a standard CGAN architecture where the generator explicitly concatenates noise ($z$) and condition ($y$) as input (G(z|y)), and uses Binary Cross Entropy (Log Loss)  for stable training.
 
 3. Channel Prediction (GRU_DPSD.py)
       1. Description: Python implementation of the predictive model.
