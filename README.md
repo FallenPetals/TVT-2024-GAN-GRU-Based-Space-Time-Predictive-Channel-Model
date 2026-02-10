@@ -46,3 +46,11 @@ To run the codes, you need the following environment:
 1. Preprocessing: Run LOS_NLOS.m in MATLAB to process raw channel measurement data and obtain path labels. Manually convert the preprocessed data from .mat file to .csv file for Step 2.
 2. Data augmentation: Run STGAN.py to train the GAN model and generate sufficient synthetic channel data.
 3. Prediction: Run GRU_DPSD.py using the generated data to evaluate prediction performance.
+
+
+# Notes
+This research constitutes a core component of the project "Research on Machine Learning-based Predictive Channel Modeling", collaborated with Huawei Technologies Co., Ltd., which has been successfully completed and validated by the industry partner.
+
+Please note that due to commercial confidentiality and data privacy policies associated with this industrial project, the full proprietary channel measurement database and specific internal system integration codes cannot be publicly released. 
+
+However, to ensure the reproducibility and scientific integrity of this paper, we have explicitly open-sourced the validated core algorithms (including Algorithm 1 & 2) and the corresponding measurement datasets used to generate the reported results.
